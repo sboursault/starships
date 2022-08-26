@@ -1,6 +1,12 @@
 from django.shortcuts import render
+from .models import Starship
 
 
 def starships(request):
-    return render(request, 'starships/starship_list.html', {'title': 'TITLE', 'text': 'TEXT'})
-
+    starship_list = Starship.objects.all().order_by("name")
+    return render(request,
+                  'starships/starship_list.html',
+                  {
+                      'title': 'Starships',
+                      'starship_list': starship_list
+                  })

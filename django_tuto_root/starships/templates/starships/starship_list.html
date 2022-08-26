@@ -2,6 +2,10 @@
 
 {% block content %}
 
-<u>{{ text }}</u>
+<ul>
+    {% for starship in starship_list %}
+    <li>{{ starship.name }}</li>
+    {% endfor %}
+</ul>
 
 {% endblock content %}
