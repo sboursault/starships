@@ -49,4 +49,7 @@ Create admin user (admin:admin)
     
 ## Resources
 
-[Technical Specifications: Spacecraft of the Imperium and the Rebel Alliance](https://starwars.fandom.com/wiki/Technical_Specifications:_Spacecraft_of_the_Imperium_and_the_Rebel_Alliance)
+- [Build a REST API in 30 minutes with Django REST Framework](https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c)
+
+- [Technical Specifications: Spacecraft of the Imperium and the Rebel Alliance](https://starwars.fandom.com/wiki/Technical_Specifications:_Spacecraft_of_the_Imperium_and_the_Rebel_Alliance)
+
