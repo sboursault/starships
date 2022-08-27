@@ -1,12 +1,31 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from .models import Starship
+from .forms import StarshipForm
 
 
 def starships(request):
     starship_list = Starship.objects.all().order_by("name")
-    return render(request,
-                  'starships/starship_list.html',
-                  {
-                      'title': 'Starships',
-                      'starship_list': starship_list
-                  })
+    return render(
+        request,
+        'starships/starship_list.html',
+        {'title': 'Starships', 'starship_list': starship_list}
+    )
+
+
+def add_starship(request):
+    submitted = False
+    if request.method == 'POST':
+        form = StarshipForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add-starship?submitted=true')
+    else:
+        form = StarshipForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(
+        request,
+        'starships/add_starship.html',
+        {'form': form, 'submitted': submitted}
+    )
