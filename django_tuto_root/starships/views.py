@@ -11,7 +11,7 @@ def starships(request):
     return render(
         request,
         'starships/starship_list.html',
-        {'title': 'Starships', 'starship_list': starship_list}
+        {'title': 'Starships', 'nav_active': 'list', 'starship_list': starship_list}
     )
 
 
@@ -29,7 +29,7 @@ def add_starship(request):
     return render(
         request,
         'starships/add_starship.html',
-        {'form': form, 'submitted': submitted}
+        {'title': 'New starship', 'nav_active': 'new', 'form': form, 'submitted': submitted}
     )
 
 

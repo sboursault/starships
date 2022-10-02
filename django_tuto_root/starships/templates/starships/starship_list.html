@@ -2,19 +2,24 @@
 
 {% block content %}
 
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th class="text-end">Size</th>
-        <th class="text-end">Max passengers</th>
-    </tr>
-    {% for starship in starship_list %}
-    <tr>
-        <td>{{ starship.name }}</td>
-        <td class="text-end">{{ starship.size }}</td>
-        <td class="text-end">{{ starship.max_passengers }}</td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container">
 
+    <h2>Starship list</h2>
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th class="text-end">Size</th>
+            <th class="text-end">Max passengers</th>
+        </tr>
+        {% for starship in starship_list %}
+        <tr>
+            <td>{{ starship.name }}</td>
+            <td class="text-end">{{ starship.size }}</td>
+            <td class="text-end">{{ starship.max_passengers }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
 {% endblock content %}
