@@ -2,10 +2,19 @@
 
 {% block content %}
 
-<ul>
+<table>
+    <tr>
+        <th>Name</th>
+        <th class="text-end">Size</th>
+        <th class="text-end">Max passengers</th>
+    </tr>
     {% for starship in starship_list %}
-    <li>{{ starship.name }}</li>
+    <tr>
+        <td>{{ starship.name }}</td>
+        <td class="text-end">{{ starship.size }}</td>
+        <td class="text-end">{{ starship.max_passengers }}</td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
 
 {% endblock content %}
