@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 from .models import Starship
 from .forms import StarshipForm
 from .serializers import StarshipSerializer
 from rest_framework import viewsets
 
 
+@login_required(login_url=reverse_lazy('login'))
 def starships(request):
     starship_list = Starship.objects.all().order_by("name")
     return render(
@@ -15,6 +18,7 @@ def starships(request):
     )
 
 
+@login_required(login_url=reverse_lazy('login'))
 def add_starship(request):
     submitted = False
     if request.method == 'POST':
@@ -33,6 +37,7 @@ def add_starship(request):
     )
 
 
+# Rest api
 class StarshipViewSet(viewsets.ModelViewSet):
     queryset = Starship.objects.all().order_by('name')
     serializer_class = StarshipSerializer

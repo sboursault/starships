@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1 class="h3">Welcome !</h1>
+
+    <p>You have successfully registered.</p>
+
+    <p><a href="{% url 'login' %}?next=/">Login</a></p>
+
+</div>
+
+
+{% endblock content %}
