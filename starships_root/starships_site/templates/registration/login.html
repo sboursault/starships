@@ -4,25 +4,23 @@
 {% block content %}
 
 <div class="container">
-
-    <h1 class="h3">Login</h1>
-
-    <div class="row">
-        <div class="col-md-12">
-            <form action="{% url 'login' %}" method="post" class="form" novalidate>
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                {% buttons %}
-                <button type="submit" class="btn btn-primary">Login</button>
-                {% endbuttons %}
-                <input type="hidden" name="next" value="{{ next }}"/>
-            </form>
+    <div class="row mt-5 justify-content-md-center">
+        <div class="col col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title h4">Login</h1>
+                    <form action="{% url 'login' %}" method="post" class="form" novalidate>
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <input type="hidden" name="next" value="{{ next }}"/>
+                        <div class="text-center">
+                            <a href="{% url 'register' %}" class="card-link">Register</a>
+                            <button type="submit" class="btn btn-primary card-link">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-
-    <p><a href="{% url 'register' %}">Register here</a></p>
-
 </div>
-
-
 {% endblock content %}
