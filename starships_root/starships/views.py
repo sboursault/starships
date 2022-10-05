@@ -10,7 +10,7 @@ from rest_framework import viewsets
 
 @login_required(login_url=reverse_lazy('login'))
 def starships(request):
-    starship_list = Starship.objects.all().order_by("name")
+    starship_list = Starship.objects.filter(user_id='Lennon').order_by("name")
     return render(
         request,
         'starships/starship_list.html',
@@ -22,7 +22,8 @@ def starships(request):
 def add_starship(request):
     submitted = False
     if request.method == 'POST':
-        form = StarshipForm(request.POST)
+        starship = Starship(user_id=request.user.id)
+        form = StarshipForm(request.POST, instance=starship)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/add-starship?submitted=true')

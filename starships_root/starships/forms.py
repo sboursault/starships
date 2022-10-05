@@ -5,4 +5,4 @@ from .models import Starship
 class StarshipForm(ModelForm):
     class Meta:
         model = Starship
-        fields = '__all__'
+        fields = ['name', 'size', 'max_passengers', 'quantity']
