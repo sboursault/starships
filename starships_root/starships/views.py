@@ -5,12 +5,12 @@ from django.urls import reverse_lazy
 from .models import Starship
 from .forms import StarshipForm
 from .serializers import StarshipSerializer
-from rest_framework import viewsets
+from rest_framework import permissions, viewsets
 
 
 @login_required(login_url=reverse_lazy('login'))
 def starships(request):
-    starship_list = Starship.objects.filter(user_id='Lennon').order_by("name")
+    starship_list = _get_starships_by_user(request.user)
     return render(
         request,
         'starships/starship_list.html',
@@ -39,6 +39,16 @@ def add_starship(request):
 
 
 # Rest api
-class StarshipViewSet(viewsets.ModelViewSet):
-    queryset = Starship.objects.all().order_by('name')
+class StarshipRestAPI(viewsets.ModelViewSet):
     serializer_class = StarshipSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return _get_starships_by_user(self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user_id=self.request.user.id)
+
+
+def _get_starships_by_user(user):
+    return Starship.objects.filter(user_id=user.id).order_by("name")
