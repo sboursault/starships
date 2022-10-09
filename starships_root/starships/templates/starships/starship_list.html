@@ -11,12 +11,16 @@
             <th>Name</th>
             <th class="text-end">Size</th>
             <th class="text-end">Max passengers</th>
+            <th class="text-end">Quantity</th>
+            <th class="text-end"></th>
         </tr>
         {% for starship in starship_list %}
         <tr>
             <td>{{ starship.name }}</td>
             <td class="text-end">{{ starship.size }}</td>
             <td class="text-end">{{ starship.max_passengers }}</td>
+            <td class="text-end">{{ starship.quantity }}</td>
+            <td class="text-end"><a class="btn btn-sm btn-outline-secondary" href="{{ starship.id }}/edit">Edit</a></td>
         </tr>
         {% endfor %}
     </table>

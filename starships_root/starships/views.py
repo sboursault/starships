@@ -20,7 +20,7 @@ def starships(request):
 
 @login_required(login_url=reverse_lazy('login'))
 def add_starship(request):
-    submitted = False
+    created = False
     if request.method == 'POST':
         starship = Starship(user_id=request.user.id)
         form = StarshipForm(request.POST, instance=starship)
@@ -30,11 +30,31 @@ def add_starship(request):
     else:
         form = StarshipForm()
         if 'submitted' in request.GET:
-            submitted = True
+            created = True
     return render(
         request,
-        'starships/add_starship.html',
-        {'title': 'New starship', 'nav_active': 'new', 'form': form, 'submitted': submitted}
+        'starships/starship_form.html',
+        {'title': 'New starship', 'nav_active': 'new', 'form': form, 'created': created}
+    )
+
+
+@login_required(login_url=reverse_lazy('login'))
+def edit_starship(request, id):
+    updated = False
+    entity = _get_starships_by_user_and_id(request.user, id)
+    if request.method == 'POST':
+        form = StarshipForm(request.POST, instance=entity)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(f'/{id}/edit?submitted=true')
+    else:
+        form = StarshipForm(instance=entity)
+        if 'submitted' in request.GET:
+            updated = True
+    return render(
+        request,
+        'starships/starship_form.html',
+        {'title': 'Edit starship', 'nav_active': None, 'form': form, 'updated': updated, 'action': f'/{id}/edit/'}
     )
 
 
@@ -52,3 +72,7 @@ class StarshipRestAPI(viewsets.ModelViewSet):
 
 def _get_starships_by_user(user):
     return Starship.objects.filter(user_id=user.id).order_by("name")
+
+
+def _get_starships_by_user_and_id(user, id):
+    return Starship.objects.filter(user_id=user.id).filter(id=id).first()

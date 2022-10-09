@@ -7,18 +7,19 @@
 
     <h1 class="h3">New starship</h1>
 
-    {% if submitted %}
+    {% if created %}
     <p class="success">Starship created.</p>
+    {% elif updated %}
+    <p class="success">Starship updated.</p>
     {% else %}
+
 
     <div class="row">
         <div class="col-md-12">
-            <form action="" method="post" class="form" novalidate>
+            <form action="{{ action }}" method="post" class="form" novalidate>
                 {% csrf_token %}
                 {% bootstrap_form form %}
-                {% buttons %}
                 <button type="submit" class="btn btn-primary">Submit</button>
-                {% endbuttons %}
             </form>
         </div>
     </div>
