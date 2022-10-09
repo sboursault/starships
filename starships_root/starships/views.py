@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import (get_object_or_404, render)
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
@@ -26,7 +26,7 @@ def add_starship(request):
         form = StarshipForm(request.POST, instance=starship)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/add-starship?submitted=true')
+            return HttpResponseRedirect('/new?submitted=true')
     else:
         form = StarshipForm()
         if 'submitted' in request.GET:
@@ -75,4 +75,4 @@ def _get_starships_by_user(user):
 
 
 def _get_starships_by_user_and_id(user, id):
-    return Starship.objects.filter(user_id=user.id).filter(id=id).first()
+    return get_object_or_404(Starship, user_id=user.id, id=id)

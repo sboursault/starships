@@ -3,27 +3,31 @@
 {% block content %}
 
 <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col col-xl-10">
+            <h1>Starship list</h1>
 
-    <h1 class="h3">Starship list</h1>
-
-    <table class="table">
-        <tr>
-            <th>Name</th>
-            <th class="text-end">Size</th>
-            <th class="text-end">Max passengers</th>
-            <th class="text-end">Quantity</th>
-            <th class="text-end"></th>
-        </tr>
-        {% for starship in starship_list %}
-        <tr>
-            <td>{{ starship.name }}</td>
-            <td class="text-end">{{ starship.size }}</td>
-            <td class="text-end">{{ starship.max_passengers }}</td>
-            <td class="text-end">{{ starship.quantity }}</td>
-            <td class="text-end"><a class="btn btn-sm btn-outline-secondary" href="{{ starship.id }}/edit">Edit</a></td>
-        </tr>
-        {% endfor %}
-    </table>
-
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th class="text-end">Size</th>
+                    <th class="text-end">Max passengers</th>
+                    <th class="text-end">Quantity</th>
+                    <th class="text-end"></th>
+                </tr>
+                {% for starship in starship_list %}
+                <tr>
+                    <td>{{ starship.name }}</td>
+                    <td class="text-end">{{ starship.size }}</td>
+                    <td class="text-end">{{ starship.max_passengers }}</td>
+                    <td class="text-end">{{ starship.quantity }}</td>
+                    <td class="text-end"><a class="btn btn-sm btn-outline-secondary"
+                                            href="{{ starship.id }}/edit">Edit</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 </div>
+
 {% endblock content %}

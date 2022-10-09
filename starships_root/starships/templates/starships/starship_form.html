@@ -3,31 +3,43 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-4">
 
-    <h1 class="h3">New starship</h1>
+            {% if form.instance.id is None %}
+            <h1>New starship</h1>
+            {% else %}
+            <h1>Edit starship</h1>
+            {% endif %}
 
-    {% if created %}
-    <p class="success">Starship created.</p>
-    {% elif updated %}
-    <p class="success">Starship updated.</p>
-    {% else %}
-
-
-    <div class="row">
-        <div class="col-md-12">
             <form action="{{ action }}" method="post" class="form" novalidate>
-                {% csrf_token %}
+
                 {% bootstrap_form form %}
-                <button type="submit" class="btn btn-primary">Submit</button>
+
+                {% csrf_token %}
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
+
+
+            {% if created %}
+            <div class="alert alert-success" role="alert">
+                Starship created. <a href="/">Return to list</a>
+            </div>
+
+            {% elif updated %}
+
+            <div class="alert alert-success" role="alert">
+                Starship updated. <a href="/">Return to list</a>
+            </div>
+
+            {% endif %}
+
         </div>
     </div>
-
-
-    {% endif %}
-
 </div>
-
 
 {% endblock content %}

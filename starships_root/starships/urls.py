@@ -7,7 +7,7 @@ router.register(r'starships', views.StarshipRestAPI, 'starships')
 
 urlpatterns = [
     path('', views.starships, name='starships'),
-    path('add-starship', views.add_starship, name='add-starship'),
+    path('new', views.add_starship, name='new'),
     path('<int:id>/edit/', views.edit_starship, name='edit-starship'),
     path('api/', include(router.urls)),
 ]

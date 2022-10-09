@@ -13,16 +13,37 @@
     {% bootstrap_messages %}
 
     <style>
-
-        .container:not(:first-child),
-        .row:not(:first-child) {
+        .alert:not(:first-child) {
             margin-top: 1rem;
         }
 
-        th {
+        h1 {
+            margin-top: 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        h1 + form div:first-child label {
+            margin-top: .5rem;
+        }
+
+        h1 + table {
+            margin-top: 1rem;
+        }
+
+        table th {
             border-bottom: 1px black solid;
         }
 
+        .form-actions {
+            margin-top: 1.5rem;
+            text-align: center!important;
+        }
+
+        ::placeholder {
+          color: rgba(0,0,0,.4)!important;
+        }
     </style>
 </head>
 <body>
@@ -36,7 +57,7 @@
                 <a class="nav-link {% if nav_active == 'list' %} active {% endif %}" href="/">List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if nav_active == 'new' %} active {% endif %}" href="/add-starship">New</a>
+                <a class="nav-link {% if nav_active == 'new' %} active {% endif %}" href="/new">New</a>
             </li>
         </ul>
         <span class="navbar-text">
