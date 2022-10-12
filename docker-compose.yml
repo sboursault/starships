@@ -1,23 +1,25 @@
 version: '3'
 services:
-  web:
+  app:
     build: .
     # volumes:
     #   - .:/code  # can be useful for development, but not working on ubuntu (https://stackoverflow.com/q/44694086)
     ports:
       - "8000:8000"
     environment:
-      - POSTGRES_NAME=postgres
+      - POSTGRES_NAME=starships
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
     depends_on:
       - postgres
   postgres:
     image: postgres:14.5-alpine
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: starships
+      POSTGRES_USER: postgres  # defines a postgres user (with superuser power)
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: starships  # name for the default database
     ports:
       - "5432:5432"
     volumes:
