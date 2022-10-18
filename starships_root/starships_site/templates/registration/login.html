@@ -14,7 +14,7 @@
                         {% bootstrap_form form %}
                         <input type="hidden" name="next" value="{{ next }}"/>
                         <div class="form-actions">
-                            <a href="{% url 'register' %}" class="card-link">Register</a>
+                            <a href="{% url 'register' %}" data-testid="register-link" class="card-link">Register</a>
                             <button type="submit" class="btn btn-primary card-link">Login</button>
                         </div>
                     </form>

@@ -7,9 +7,9 @@
 
     <h1>Welcome !</h1>
 
-    <p>You have successfully registered.</p>
+    <p data-testid="register-success-msg">You have successfully registered.</p>
 
-    <p><a href="{% url 'login' %}?next=/">Login</a></p>
+    <p><a href="{% url 'login' %}?next=/" data-testid="register-success-login-link">Login</a></p>
 
 </div>
 
