@@ -4,14 +4,14 @@ import registerPage from "../pages/register.page"
 import loginPage from "../pages/login.page"
 
 describe('User registration', () => {
-  it('passes', () => {
+  it('registers users', () => {
     
-    // remove user with api call
-    
+    cy.task('deleteUser', 'test_user')
+
     browser.gotoLoginPage()
     loginPage.getRegisterLink().click()
     
-    registerPage.fillLogin("seb78")
+    registerPage.fillLogin("test_user")
     registerPage.fillPassword1("complex_password!")
     registerPage.fillPassword2("complex_password!")
     registerPage.submit()
@@ -20,5 +20,6 @@ describe('User registration', () => {
     // now login
     registerPage.getLoginLink().click()
 
+    // TODO
   })
 })

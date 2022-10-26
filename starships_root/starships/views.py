@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import (get_object_or_404, render)
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -5,6 +6,7 @@ from django.urls import reverse_lazy
 from .models import Starship
 from .forms import StarshipForm
 from .serializers import StarshipSerializer
+from .serializers import UserSerializer
 from rest_framework import permissions, viewsets
 
 
@@ -70,6 +72,19 @@ class StarshipRestAPI(viewsets.ModelViewSet):
         serializer.save(user_id=self.request.user.id)
 
 
+class UserRestAPI(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAdminUser]
+    queryset = User.objects.all()
+
+    def get_queryset(self):
+        if self.action is 'list' and 'username' in self.request.query_params:
+            return User.objects.filter(username=self.request.query_params['username'])
+        else:
+            return User.objects.all()
+
+
+# helpers
 def _get_starships_by_user(user):
     return Starship.objects.filter(user_id=user.id).order_by("name")
 
