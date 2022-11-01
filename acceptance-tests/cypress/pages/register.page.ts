@@ -1,5 +1,9 @@
 class RegisterPage {
 
+    visit() {
+        cy.visit('/register')
+    }
+
     getRegisterForm() {
         return cy.testId('register-form')
     }
@@ -12,21 +16,45 @@ class RegisterPage {
         return cy.testId('register-success-login-link')
     }
 
-    fillLogin(value: string) {
-        this.getRegisterForm()
+    getUsernameInput() {
+        return this.getRegisterForm()
             .find("input[name='username']")
+    }
+
+    getUsernameErrorMessage() {
+        return this.getUsernameInput().next()
+    }
+
+    getPassword1Input() {
+        return this.getRegisterForm()
+            .find("input[name='password1']")
+    }
+
+    getPassword1ErrorMessage() {
+        return this.getPassword1Input().next()
+    }
+
+    getPassword2Input() {
+        return this.getRegisterForm()
+            .find("input[name='password2']")
+    }
+
+    getPassword2ErrorMessage() {
+        return this.getPassword2Input().next()
+    }
+
+    fillUsername(value: string) {
+        this.getUsernameInput()
             .type(value)
     }
 
     fillPassword1(value: string) {
-        this.getRegisterForm()
-            .find("input[name='password1']")
+        this.getPassword1Input()
             .type(value)
     }
 
     fillPassword2(value: string) {
-        this.getRegisterForm()
-            .find("input[name='password2']")
+        this.getPassword2Input()
             .type(value)
     }
 
