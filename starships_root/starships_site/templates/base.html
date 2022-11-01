@@ -61,7 +61,7 @@
             </li>
         </ul>
         <span class="navbar-text">
-            User: {{ user.username }}
+            User: <span data-testid="logged-user">{{ user.username }}</span>
             <a href="{% url 'logout' %}?next=/" class="btn btn-sm btn-outline-secondary ms-2">Log out</a>
         </span>
         {% endif %}

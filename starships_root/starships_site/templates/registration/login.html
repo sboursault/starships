@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title h4">Login</h1>
-                    <form action="{% url 'login' %}" method="post" class="form" novalidate>
+                    <form action="{% url 'login' %}" method="post" class="form" data-testid="login-form" novalidate>
                         {% csrf_token %}
                         {% bootstrap_form form %}
                         <input type="hidden" name="next" value="{{ next }}"/>
