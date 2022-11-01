@@ -1,8 +1,6 @@
-class StarshipListPage {
+import { BasePage } from "./base.page";
 
-    getLoggedUserInfo() {
-        return cy.testId('logged-user')
-    }
+class StarshipListPage extends BasePage {
 }
 
 export default new StarshipListPage();
