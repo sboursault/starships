@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starships-app-deployment
+  labels: 
+    app: starships-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: starships-app
+  template:  # this applies to a pod
+    metadata:
+      labels:
+        app: starships-app
+    spec:  # spec (blueprint) for a pod
+      containers:
+        - name: starships-app
+          image: nginx:1.16
+          env:
+            - name: SOME_ENV
+              value: $SOME_ENV
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service  # it makes sense to have the service and the deployment in the same file
+metadata:
+  name: starships-app-service
+spec:
+  selector:
+    app: starships-app  # points to the deployment label and template label 'app: nginx'
+  type: LoadBalancer    # (optional) makes it an external services
+  ports:
+    - protocol: TCP
+      port: 80  # listens on port 80
+      targetPort: 8080  # forward request to pods port 8080 (this should match the 'containerPort')
+      nodePort: 30000  # (optional) port exposed by the external service (must be between 30000 and 32767)

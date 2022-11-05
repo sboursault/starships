@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels: 
+    app: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:  # this applies to a pod
+    metadata:
+      labels:
+        app: postgres
+    spec:  # spec (blueprint) for a pod
+      containers:
+        - name: postgres
+          image: postgres:14.5-alpine
+          env:
+            - name: POSTGRES_NAME
+              value: starships
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_HOST
+              value: postgres
+            - name: POSTGRES_PORT
+              value: "5432"
+          ports:
+            - containerPort: 5432
+---
+apiVersion: v1
+kind: Service  # it makes sense to have the service and the deployment in the same file
+metadata:
+  name: postgres-service
+spec:
+  selector:
+    app: postgres  # points to the deployment label and template label 'app: nginx'
+  type: LoadBalancer    # (optional) makes it an external services
+  ports:
+    - protocol: TCP
+      port: 5432  # listens on port 5432
+      targetPort: 5432  # forward request to pods port 5432 (this should match the 'containerPort')
+      nodePort: 30010  # (optional) port exposed by the external service (must be between 30000 and 32767)

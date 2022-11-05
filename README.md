@@ -1,4 +1,4 @@
-# Django_tuto
+# Starships 
 
 How to start the app
 How to run the tests ?
