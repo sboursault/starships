@@ -13,6 +13,9 @@ describe('User registration', () => {
     cy.task('deleteUser', username)
   })
 
+  /**
+   * This is how a user registers and sign in.
+   */
   specify('-- Happy path -- filling the registration form and signing in', () => {
 
     browser.gotoLoginPage()
@@ -34,6 +37,9 @@ describe('User registration', () => {
     // TODO: actually login through cy.request
   })
 
+  /**
+   * Edge case
+   */
   specify('username, password1 and password2 are mandatory', () => {
 
     registerPage.visit()
@@ -44,6 +50,9 @@ describe('User registration', () => {
     registerPage.getPassword2ErrorMessage().should('contain.text', 'This field is required.')
   })
 
+  /**
+   * Edge case
+   */
   specify('password1 and password2 must be the same', () => {
 
     registerPage.visit()
