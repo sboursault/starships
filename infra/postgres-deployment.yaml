@@ -18,16 +18,12 @@ spec:
         - name: postgres
           image: postgres:14.5-alpine
           env:
-            - name: POSTGRES_NAME
+            - name: POSTGRES_DB
               value: starships
             - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PASSWORD
               value: postgres
-            - name: POSTGRES_HOST
-              value: postgres
-            - name: POSTGRES_PORT
-              value: "5432"
           ports:
             - containerPort: 5432
 ---
