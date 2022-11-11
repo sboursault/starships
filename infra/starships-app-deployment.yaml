@@ -16,12 +16,20 @@ spec:
     spec:  # spec (blueprint) for a pod
       containers:
         - name: starships-app
-          image: nginx:1.16
+          image: starships-app:1.0
           env:
-            - name: SOME_ENV
-              value: $SOME_ENV
+            - name: POSTGRES_NAME
+              value: starships
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_HOST
+              value: postgres
+            - name: POSTGRES_PORT
+              value: "5432"
           ports:
-            - containerPort: 8080
+            - containerPort: 8000
 ---
 apiVersion: v1
 kind: Service  # it makes sense to have the service and the deployment in the same file
@@ -33,6 +41,6 @@ spec:
   type: LoadBalancer    # (optional) makes it an external services
   ports:
     - protocol: TCP
-      port: 80  # listens on port 80
-      targetPort: 8080  # forward request to pods port 8080 (this should match the 'containerPort')
-      nodePort: 30000  # (optional) port exposed by the external service (must be between 30000 and 32767)
+      port: 8000       # listens on port 80
+      targetPort: 8000 # forward request to pods port 8080 (this should match the 'containerPort')
+      nodePort: 30001  # (optional) port exposed by the external service (must be between 30000 and 32767)

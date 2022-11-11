@@ -3,7 +3,7 @@ services:
   app:
     build: .
     # volumes:
-    #   - .:/code  # can be useful for development, but not working on ubuntu (https://stackoverflow.com/q/44694086)
+    #   - .:/code  # could be useful for development, but not working on ubuntu (https://stackoverflow.com/q/44694086)
     ports:
       - "8000:8000"
     environment:
