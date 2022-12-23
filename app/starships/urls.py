@@ -4,7 +4,6 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'starships', views.StarshipRestAPI, 'starships')
-router.register(r'users', views.UserRestAPI, 'users')
 
 urlpatterns = [
     path('', views.starships, name='starships'),

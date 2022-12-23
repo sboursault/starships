@@ -16,12 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
-from .views import RegisterView
+from .views import RegisterView, UserRestAPI
+from rest_framework.authtoken import views
+from rest_framework import routers
+
+
+router = routers.DefaultRouter()
+router.register(r'users', UserRestAPI, 'users')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/success', TemplateView.as_view(template_name='registration/success.html'), name='register-success'),
     path('register/', RegisterView.as_view(), name='register'),
+    path('api/authorize', views.obtain_auth_token),
     path('', include('django.contrib.auth.urls')),  # verify if required
     path('', include('starships.urls')),
+    path('api/', include(router.urls)),
 ]
