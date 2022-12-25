@@ -69,7 +69,8 @@
               "browserTarget": "starships-angular:build:production"
             },
             "development": {
-              "browserTarget": "starships-angular:build:development"
+              "browserTarget": "starships-angular:build:development",
+              "proxyConfig": "proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"

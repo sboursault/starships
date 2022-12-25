@@ -33,6 +33,12 @@ to evaluate :
 - jmeter
 
 
+## Start postgres
+```shell
+docker compose -f infra/docker-compose.yml up postgres -d
+```
+
+
 
 The application exposes rest endpoints. You must be authenticated to use these endpoints, either with a token or a basic auth.
 The application ships with basic web pages, that use the django session.
@@ -64,4 +70,29 @@ curl http://localhost:8000/api/users/ \
 
 
 
+
+https://www.positronx.io/angular-jwt-user-authentication-tutorial/
+
+
+
+https://www.youtube.com/watch?v=k5E2AVpwsko
+10:00 -> interesting, see how he binds his basket with other compenents
+
+https://www.youtube.com/watch?v=3dHNOWTI7H8
+this one is newer
+
+https://www.twilio.com/blog/build-progressive-web-application-django-angular-part-2-frontend-interface
+
+build an angular and create a container to run it with nginx
+https://www.scaleway.com/en/docs/tutorials/deploy-angular-application/
+
+dev :
+proxying a backend urls: https://angular.io/guide/build#proxying-to-a-backend-server
+
+
+https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
+
+
+to get a token
+curl -X POST 'http://localhost:8000/api/authorize' --header 'content-type: application/json' --data '{"username": "admin", "password": "admin"}'
 
