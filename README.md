@@ -1,13 +1,29 @@
 # Starships 
 
-How to start the app
-How to run the tests ?
 
-## install  dependencies
+## Start postgres
 
 ```shell
-pip install -r requirements.txt
+docker compose -f infra/docker-compose.yml up postgres -d
 ```
+
+
+## Start django back-end
+
+```shell
+source venv/bin/activate
+pip install -r requirements.txt
+cd starships-django/
+./start.sh
+```
+
+## Start angular front-end
+
+```shell
+cd starships-angular/
+ng serve
+```
+
 
 ## Resources
 
@@ -26,17 +42,6 @@ http://flecox.github.io/django/2015/05/28/django-execute-sql-file-inside-a-migra
 how to run api test along with cypress tests
 move user rest view to site folder
 
-
-to evaluate :
-- gauge instead of cucumber (allows to embed images and other stuff in doc, plus the can be embedded in a docusaurus)
-- babel to generate md doc from tests
-- jmeter
-
-
-## Start postgres
-```shell
-docker compose -f infra/docker-compose.yml up postgres -d
-```
 
 
 
@@ -86,13 +91,8 @@ https://www.twilio.com/blog/build-progressive-web-application-django-angular-par
 build an angular and create a container to run it with nginx
 https://www.scaleway.com/en/docs/tutorials/deploy-angular-application/
 
-dev :
-proxying a backend urls: https://angular.io/guide/build#proxying-to-a-backend-server
-
-
+# Resources
 https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
+https://www.positronx.io/angular-jwt-user-authentication-tutorial/
 
-
-to get a token
-curl -X POST 'http://localhost:8000/api/authorize' --header 'content-type: application/json' --data '{"username": "admin", "password": "admin"}'
 

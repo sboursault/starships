@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row mt-5 justify-content-md-center">
+      <div class="col col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title h4">Login</h1>
+
+
+            <form (ngSubmit)="onSubmit()" #signInForm="ngForm">
+              <!-- #signInForm creates an alias -->
+
+              <div class="form-group">
+                <label for="login" class="form-label">Login</label>
+                <input type="text" class="form-control" id="login" required [(ngModel)]="model.login" name="login"
+                  #login="ngModel">
+                <div [hidden]="login.valid || login.pristine" class="alert alert-danger">
+                  Login is required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="text" class="form-control" id="password" required [(ngModel)]="model.password" name="password"
+                  #password="ngModel">
+                <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                  Password is required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" [disabled]="!signInForm.form.valid">Sign in</button>
+              </div>
+
+            </form>
+            <!--
+
+
+            <form (ngSubmit)="onSubmit()">
+              <div class="">
+                <label for="text">Task</label>
+                <input type="text" name="text" [(ngModel)]="text" id="text" placeholder="Add task" />
+              </div>
+              <input type="submit" value="save" class="btn btn-block" />
+            </form>
+
+            -->
+
+
+
+
+
+
+
+
+
+            <!--<form action="{% url 'login' %}" method="post" class="form" data-testid="login-form" novalidate>
+
+                {% csrf_token %}
+                {% bootstrap_form form %}
+
+
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <div class="form-actions">
+                    <a href="{% url 'register' %}" data-testid="register-link" class="card-link">Register</a>
+                    <button type="submit" class="btn btn-primary card-link">Login</button>
+                </div>
+            </form>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

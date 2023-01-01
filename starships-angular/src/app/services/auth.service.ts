@@ -12,19 +12,18 @@ import { User } from '../models/user'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, public router: Router) {}
-
+  currentUser = '';
   endpoint: string = 'http://localhost:4000/api';
 
+  constructor(private http: HttpClient, public router: Router) { }
+
   signIn(user: User) {
-    //return this.http
-    //  .post<any>(`${this.endpoint}/signin`, user)
-    //  .subscribe((res: any) => {
-    //    localStorage.setItem('access_token', res.token);
-    //    this.getUserProfile(res._id).subscribe((res) => {
-    //      this.currentUser = res;
-    //      this.router.navigate(['user-profile/' + res.msg._id]);
-    //    });
-    //  });
+    return this.http
+      .post<any>(`${this.endpoint}/signin`, user)
+      .subscribe((res: any) => {
+        this.currentUser = user.login
+        localStorage.setItem('access_token', res.token);
+        //this.router.navigate(['user-profile/' + res.msg._id]);
+      });
   }
 }
