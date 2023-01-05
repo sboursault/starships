@@ -13,16 +13,16 @@ import { User } from '../models/user'
 export class AuthService {
 
   currentUser = '';
-  endpoint: string = 'http://localhost:4000/api';
 
   constructor(private http: HttpClient, public router: Router) { }
 
   signIn(user: User) {
     return this.http
-      .post<any>(`${this.endpoint}/signin`, user)
+      .post<any>(`/api/authorize`, user)
       .subscribe((res: any) => {
-        this.currentUser = user.login
+        this.currentUser = user.username
         localStorage.setItem('access_token', res.token);
+        console.log(`welcome ${this.currentUser}`)
         //this.router.navigate(['user-profile/' + res.msg._id]);
       });
   }

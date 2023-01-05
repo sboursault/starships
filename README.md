@@ -76,12 +76,14 @@ curl http://localhost:8000/api/users/ \
 
 
 
+
+
+
+# Resources
+
+https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
 https://www.positronx.io/angular-jwt-user-authentication-tutorial/
 
-
-
-https://www.youtube.com/watch?v=k5E2AVpwsko
-10:00 -> interesting, see how he binds his basket with other compenents
 
 https://www.youtube.com/watch?v=3dHNOWTI7H8
 this one is newer
@@ -91,8 +93,5 @@ https://www.twilio.com/blog/build-progressive-web-application-django-angular-par
 build an angular and create a container to run it with nginx
 https://www.scaleway.com/en/docs/tutorials/deploy-angular-application/
 
-# Resources
-https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
-https://www.positronx.io/angular-jwt-user-authentication-tutorial/
 
 

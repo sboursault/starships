@@ -24,11 +24,7 @@ export class SignInComponent {
 
   model = new User('', '');
 
-  submitted = false;
-
-  onSubmit() { this.submitted = true; }
-
-  //signIn() {
-  //  this.authService.signIn(this.signinForm.value);
-  //}
+  onSubmit() { 
+    this.authService.signIn(this.model);
+  }
 }

@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    build: .
+    build: ../starships-django
     # volumes:
     #   - .:/code  # could be useful for development, but not working on ubuntu (https://stackoverflow.com/q/44694086)
     ports:
