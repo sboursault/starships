@@ -6,25 +6,18 @@ import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  templateUrl: './sign-in.component.html'
 })
 export class SignInComponent {
 
   constructor(
-    //private formBuilder: FormBuilder,
     private authService: AuthService,
     public router: Router
-  ) {
-    /*this.signinForm = this.formBuilder.group({
-      login: [''],
-      password: [''],
-    });*/
-  }
+  ) { }
 
   model = new User('', '');
 
-  onSubmit() { 
+  onSubmit() {
     this.authService.signIn(this.model);
   }
 }
