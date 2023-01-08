@@ -14,7 +14,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AuthService {
 
-  private currentUser: string = '';
+  public currentUser: string = '';
   private subject = new Subject<any>()
 
   constructor(private http: HttpClient, public router: Router) { }
