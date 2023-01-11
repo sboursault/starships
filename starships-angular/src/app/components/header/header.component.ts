@@ -16,9 +16,14 @@ export class HeaderComponent {
     // but it has inconvienents:
     // - we should probably avoid to refer dependencies in the template
     // - this string interpolation won't work for more complex logic (e.g. to update a list of items).
-    this.authService.onSignInSignOut().subscribe(
+    this.authService.onUserChanged().subscribe(
       value => this.username = value
     )
+
+
+    // SHOULD I UNSUBSCRIBE ?
+
+
   }
 
 }

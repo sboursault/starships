@@ -7,15 +7,16 @@ import {
 } from '@angular/common/http'
 import { Router } from '@angular/router'
 import { User } from '../models/user'
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public currentUser: string = '';
-  private subject = new Subject<any>()
+  private user$ = new Subject<string>()
+  // some people name observables and subjects with a trailing $.
+  // see also : new BehaviorSubject<string>('')
 
   constructor(private http: HttpClient, public router: Router) { }
 
@@ -24,20 +25,18 @@ export class AuthService {
       .post<any>(`/api/authorize`, user)
       .subscribe({
         next: (body: any) => {
-          this.currentUser = user.username
           localStorage.setItem('access_token', body.token);
-          this.subject.next(this.currentUser)
+          this.user$.next(user.username)
           //this.router.navigate(['user-profile/' + res.msg._id]);
         },
-        error: error => {
-          this.currentUser = ''
+        error: (error : HttpErrorResponse) => {
           localStorage.removeItem('access_token');
-          this.subject.next(this.currentUser)
+          this.user$.next('')
         }
       })
   }
 
-  onSignInSignOut(): Observable<any> {
-    return this.subject.asObservable()
+  onUserChanged(): Observable<any> {
+    return this.user$.asObservable()
   }
 }

@@ -2,11 +2,7 @@
 FROM python:3.10-alpine
 ENV PYTHONDONTWRITEBYTECODE=1
 WORKDIR /code
-COPY starships /code/starships
-COPY starships_site /code/starships_site
-COPY manage.py /code/
-COPY requirements.txt /code/
-COPY start.sh /code/
+COPY . /code
 RUN pip install -r requirements.txt
 CMD ["./start.sh"]
 
