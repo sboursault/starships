@@ -26,4 +26,8 @@ export class HeaderComponent {
 
   }
 
+  isAuthenticated(): boolean {
+    return this.username != ''
+  }
+
 }

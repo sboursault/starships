@@ -2,20 +2,20 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Starships</a>
 
-    {{ username }}
-    <!--{% if user.is_authenticated %}
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link {% if nav_active == 'list' %} active {% endif %}" href="/">List</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {% if nav_active == 'new' %} active {% endif %}" href="/new">New</a>
-            </li>
-        </ul>
-        <span class="navbar-text">
-            User: <span data-testid="logged-user">{{ user.username }}</span>
-            <a href="{% url 'logout' %}?next=/" class="btn btn-sm btn-outline-secondary ms-2">Log out</a>
-        </span>
-        {% endif %}-->
+    <div *ngIf="isAuthenticated()">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if nav_active == 'list' %} active {% endif %}" href="/">List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if nav_active == 'new' %} active {% endif %}" href="/new">New</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        User: <span data-testid="logged-user">{{ username }}</span>
+        <a href="{% url 'logout' %}?next=/" class="btn btn-sm btn-outline-secondary ms-2">Log out</a>
+      </span>
+    </div>
+
   </div>
 </nav>

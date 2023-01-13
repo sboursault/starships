@@ -95,3 +95,11 @@ https://www.scaleway.com/en/docs/tutorials/deploy-angular-application/
 
 
 
+
+
+
+
+NOTICE: Hot Module Replacement (HMR) is enabled for the dev server.
+See https://webpack.js.org/guides/hot-module-replacement for information on working with HMR for Webpack.
+
+
