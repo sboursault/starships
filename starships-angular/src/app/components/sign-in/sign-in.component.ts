@@ -15,7 +15,7 @@ export class SignInComponent {
     public router: Router
   ) { }
 
-  model = new User('', '');
+  model = new User(null, '', '');
 
   onSubmit() {
     this.authService.signIn(this.model);

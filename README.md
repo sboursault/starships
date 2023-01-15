@@ -4,7 +4,8 @@
 ## Start postgres
 
 ```shell
-docker compose -f infra/docker-compose.yml up postgres -d
+docker compose -f infra/docker-compose.yml up postgres -d  # start postgres
+docker compose -f infra/docker-compose.yml up --build -d   # start all
 ```
 
 

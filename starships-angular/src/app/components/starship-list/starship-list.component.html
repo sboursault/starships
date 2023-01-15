@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div class="row justify-content-md-center">
+      <div class="col col-xl-10">
+          <h1>Starship list</h1>
+
+          <table class="table">
+              <tr>
+                  <th>Name</th>
+                  <th class="text-end">Size</th>
+                  <th class="text-end">Max passengers</th>
+                  <th class="text-end">Quantity</th>
+              </tr>
+              <tr *ngFor="let starship of starships">
+                  <td>{{ starship.name }} - {{ starship.userId }}</td>
+                  <td class="text-end">{{ starship.size }}</td>
+                  <td class="text-end">{{ starship.maxPassengers }}</td>
+                  <td class="text-end">{{ starship.quantity }}</td>
+              </tr>
+          </table>
+      </div>
+  </div>
+</div>
+

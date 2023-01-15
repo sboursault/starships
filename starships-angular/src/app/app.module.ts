@@ -8,13 +8,15 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { StarshipListComponent } from './starship-list/starship-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SignInComponent
+    SignInComponent,
+    StarshipListComponent
   ],
   imports: [
     BrowserModule,
