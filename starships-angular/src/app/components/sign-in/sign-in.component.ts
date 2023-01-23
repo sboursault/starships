@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 
@@ -16,6 +15,8 @@ export class SignInComponent {
   ) { }
 
   model = new User(null, '', '');
+
+  // SEE ALSO REACTIVE FORMS
 
   onSubmit() {
     this.authService.signIn(this.model);

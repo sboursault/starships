@@ -25,22 +25,33 @@ export class AuthService {
   signIn(user: User) {
     return this.http.post<any>(`/api/authorize`, user).subscribe({
       next: (body: any) => {
-        localStorage.setItem('access_token', body.token);
-        this.user$.next(user);  // TODO replace with the user from the service
-        //this.router.navigate(['user-profile/' + res.msg._id]);
+        // console.log(body)
+        localStorage.setItem('access_token', body.token)
+        this.user$.next(user)
+        this.router.navigate(['home'])
       },
       error: (error: HttpErrorResponse) => {
-        localStorage.removeItem('access_token');
-        this.user$.next(null);
+        this.logout()
       },
     });
   }
 
   onUserChanged(): Observable<User | null> {
-    return this.user$.asObservable();
+    return this.user$.asObservable()
   }
 
   getLoggedUser(): User | null {
-    return this.user$.getValue();
+    return this.user$.getValue()
+  }
+
+  isLoggedIn(): boolean {
+    return this.user$.getValue() != null
+  }
+
+  logout(): void {
+    localStorage.removeItem('access_token')
+    this.user$.next(null)
+    console.info('User logged out')
+    this.router.navigate(['sign-in'])
   }
 }

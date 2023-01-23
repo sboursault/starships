@@ -1,19 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+// Default variable overrides (see ../node_modules/bootstrap/scss/variables)
 
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
 
-.form-group, .form-actions {
-    margin-top: 1rem;
+$body-bg: $gray-900; // gray-900
+$body-color: $gray-300; // gray-300
+$card-bg: $gray-900; // gray-900
+$card-border-color: $gray-600; // gray-600
+
+// bootrap imports
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// custom css
+
+.navbar {
+  background-color: $gray-800;
+}
+
+.form-group,
+.form-actions {
+  margin-top: 1rem;
 }
 
 .form-actions {
-    text-align: center;
+  text-align: center;
 }
 
 .ng-valid[required],
 .ng-valid.required {
-    border-left: 5px solid #42A948;
+  border-left: 5px solid $success;
 }
 
 .ng-dirty.ng-invalid:not(form) {
-    border-left: 5px solid #a94442;
+  border-left: 5px solid $danger;
 }

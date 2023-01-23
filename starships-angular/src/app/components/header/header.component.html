@@ -1,19 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Starships</a>
 
     <div *ngIf="isAuthenticated()">
-      <ul class="navbar-nav me-auto">
+      <!-- <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link {% if nav_active == 'list' %} active {% endif %}" href="/">List</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if nav_active == 'new' %} active {% endif %}" href="/new">New</a>
         </li>
-      </ul>
+      </ul> -->
       <span class="navbar-text">
         User: <span data-testid="logged-user">{{ username }}</span>
-        <a href="{% url 'logout' %}?next=/" class="btn btn-sm btn-outline-secondary ms-2">Log out</a>
+        <a class="btn btn-sm btn-outline-secondary ms-2" (click)="onLogout()">Log out</a>
       </span>
     </div>
 

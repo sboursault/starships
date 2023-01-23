@@ -1,10 +1,10 @@
 export class Starship {
   constructor(
-    id: number,
-    userId: number,
-    name: string,
-    size?: number,
-    maxPassengers?: number,
-    quantity?: number
+    public id: number,
+    public userId: number,
+    public name: string,
+    public size?: number,
+    public maxPassengers?: number,
+    public quantity?: number
   ) {}
 }

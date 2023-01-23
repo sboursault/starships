@@ -19,15 +19,15 @@ export class HeaderComponent {
     this.authService.onUserChanged().subscribe(
       value => this.username = value ? value.username : ''
     )
-
-
     // SHOULD I UNSUBSCRIBE ?
-
-
   }
 
   isAuthenticated(): boolean {
     return this.username != ''
+  }
+
+  onLogout() {
+    this.authService.logout()
   }
 
 }
